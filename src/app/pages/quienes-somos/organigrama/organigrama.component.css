@@ -1,0 +1,92 @@
+.organigrama {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.organigrama .nivel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.organigrama .nivel .caja1 {
+  text-align: center;
+  border: 2px solid #8A9B68;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #A4D48B;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.organigrama .nivel .caja1:hover {
+  scale: 1.5;
+}
+
+.organigrama .nivel .caja2 {
+  text-align: center;
+  border: 2px solid #8A9B68;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #FBC397;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.organigrama .nivel .caja2:hover {
+  scale: 1.25;
+}
+
+.organigrama .lineaV {
+  width: 2px;
+  background-color: #8A9B68;
+  position: relative;
+  height: 20px;
+}
+
+.organigrama .lineaH {
+  width: 2px;
+  background-color: #8A9B68;
+  position: relative;
+  height: 2px;
+  flex: 1;
+}
+
+.organigrama .conector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.junta-directiva {
+  padding: 0px 60px 0px 60px;
+}
+
+.junta-directiva h2 {
+  font-size: 18px;
+}
+
+.junta-directiva ul {
+  list-style-type: disc;
+  font-size: 16px;
+  line-height: 1.6;
+  list-style: none;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px
+}
+
+.junta-directiva li {
+  padding-top: 10px;
+}

@@ -1,0 +1,62 @@
+/* Estilos personalizados */
+header {
+  background-color: green !important;
+}
+
+/* Estilos para enlaces activos */
+.nav-link.activo {
+  text-decoration: underline 2px solid white;
+  text-underline-position: under;
+  text-underline-offset: 10px;
+}
+
+.nav-item:hover {
+  color:black;
+}
+
+/* Ajuste para el dropdown */
+.dropdown-menu {
+  border-radius: 5px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #2ba72b;
+}
+
+a {
+  font-weight: bold;
+}
+
+header {
+  background-color: green;
+}
+
+@media (max-width: 768px) {
+  .accesos {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  header {
+    padding: 0px 60px 0px 60px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1400px) {
+  header {
+    padding: 0px 60px 0px 60px;
+  }
+}
+
+.dropdown-menu li {
+  margin-bottom: 15px;
+}
+
+.dropdown-menu li:last-child {
+  margin-bottom: 0;
+}
+
+.btn{
+  cursor: pointer;
+  border: 0px;
+}

@@ -1,0 +1,55 @@
+<main>
+  <section class="formContacto">
+    <div class="lineaVertical">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d888.9224929118218!2d-3.7874207773225113!3d37.77490428963402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6dd7098671c45d%3A0x4da4cd083d4de0fc!2sAfais%20Jaen!5e1!3m2!1ses!2ses!4v1737407479463!5m2!1ses!2ses"
+        width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="info">
+        <div>Calle Pintor Zabaleta, 7, 23008 Jaén</div>
+        <div>afais-jaen&#64;afais-jaen.es</div>
+        <div>Teléfono 953 08 84 82 | Whatsapp 601 32 59 03</div>
+      </div>
+    </div>
+    <form *ngIf="!mensajeEnviado" #contactoForm="ngForm" (ngSubmit)="enviarFormulario(contactoForm)">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" ngModel placeholder="Nombre completo" type="text" required autocomplete="off">
+
+      <label for="email">Correo electrónico</label>
+      <input id="email" name="email" ngModel placeholder="Correo electrónico" type="email" required autocomplete="off">
+
+      <label for="consulta">Consulta</label>
+      <select id="consulta" name="consulta" ngModel required>
+        <option disabled selected>-Elige una opción-</option>
+        <option value="Información General">Información General</option>
+        <option value="Información Psicología">Información Psicología</option>
+        <option value="Información Pedagogía">Información Pedagogía</option>
+      </select>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" ngModel placeholder="Escribe tu consulta..." required></textarea>
+
+      <!-- Honeypot Field (Campo oculto para detectar bots) -->
+      <input type="text" name="honeypot" ngModel style="display: none;" autocomplete="off">
+
+      <!-- reCAPTCHA -->
+      <re-captcha [siteKey]="'6LdsJNkqAAAAANADgWJWewcK6cDqejDhplbMCBz0'" (resolved)="onCaptchaResolved($event)">
+      </re-captcha>
+      <input type="hidden" name="recaptchaResponse" [value]="recaptchaResponse">
+
+      <input type="submit" class="enviar" value="Enviar">
+
+    </form>
+
+    <div *ngIf="mensajeExito" style="color: black; margin-top: 10px; font-size: 25px">
+      <p>✅ Mensaje enviado correctamente.</p>
+    </div>
+
+    <div *ngIf="!mensajeExito && mensajeEnviado" style="color: black; margin-top: 10px; font-size: 25px">
+      <p>Procesando envio de formulario...</p>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  </section>
+</main>

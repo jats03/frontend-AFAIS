@@ -1,0 +1,11 @@
+@media (max-width: 992px) {
+  .position-relative[style] {
+    width: 532px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .position-relative[style] {
+    width: 256px !important;
+  }
+}

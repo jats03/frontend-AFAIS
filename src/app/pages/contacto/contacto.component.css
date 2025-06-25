@@ -1,0 +1,70 @@
+main .formContacto {
+  padding-left: 60px;
+  display: grid;
+  grid-template-areas: "linea form";
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
+  font-size: 15px;
+}
+
+main .formContacto form textarea {
+  resize: none;
+}
+
+main .formContacto .lineaVertical {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-right: 1px solid black;
+}
+
+main .formContacto .lineaVertical .info {
+  padding: 20px 0px 0px 0px;
+  align-self: start;
+}
+
+main .formContacto .lineaVertical div {
+  padding: 12.5px 0px 12.5px 0px;
+}
+
+
+main .formContacto form {
+  grid-area: form;
+  padding: 20px 100px 0px 0px;
+  justify-content: start;
+}
+
+main .formContacto form input,
+form select,
+form textarea {
+  margin: 10px 0px 10px 0px;
+  width: 100%;
+  min-height: 30px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+main .formContacto form textarea {
+  height: 100px;
+  padding-top: 10px;
+}
+
+main .formContacto form .enviar {
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  margin-top: 10px;
+  height: 35px;
+  font-size: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+main .formContacto form .enviar:hover,
+main .login form .entrar:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}

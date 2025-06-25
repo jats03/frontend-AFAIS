@@ -1,0 +1,45 @@
+<main class="container py-4">
+  <section class="misionFines">
+    <h1 class="encabezados text-dark mb-4">SOMOS AFAIS</h1>
+
+    <div class="border rounded p-3 shadow-sm bg-white">
+      <p *ngIf="!info.editando" class="m-0 text-break w-100 fs-5"
+        [style.white-space]="'pre-line'">
+        {{ info.somosAfais }}
+      </p>
+      <textarea *ngIf="isLoggedIn && info.editando" [(ngModel)]="info.somosAfais" class="form-control mt-2 p-3 fs-5"
+        rows="3"></textarea>
+    </div>
+
+    <h1 class="encabezados text-dark mt-4 mb-3">MISIÓN</h1>
+    <div class="border rounded p-3 shadow-sm bg-white">
+      <p *ngIf="!info.editando" class="m-0 text-break w-100 fs-5"
+        [style.white-space]="'pre-line'">
+        {{ info.mision }}
+      </p>
+      <textarea *ngIf="isLoggedIn && info.editando" [(ngModel)]="info.mision" class="form-control mt-2 p-3 fs-5"
+        rows="3"></textarea>
+    </div>
+
+    <h1 class="encabezados text-dark mt-4 mb-3">FINES</h1>
+    <div class="border rounded p-3 shadow-sm bg-white">
+      <p *ngIf="!info.editando" class="m-0 text-break w-100 fs-5"
+        [style.white-space]="'pre-line'">
+        {{ info.fines }}
+      </p>
+      <textarea *ngIf="isLoggedIn && info.editando" [(ngModel)]="info.fines" class="form-control mt-2 p-3 fs-5"
+        rows="3"></textarea>
+    </div>
+
+    <div class="mt-4 text-start">
+      <button *ngIf="isLoggedIn && info.editando" class="btn btn-success px-4 py-2 me-2" (click)="guardarEdicion(info)">
+        <i class="bi bi-save"></i> Guardar
+      </button>
+      <button *ngIf="isLoggedIn && !info.editando" class="btn btn-warning px-4 py-2" (click)="editarInfo(info)">
+        <i class="bi bi-pencil-square"></i> Editar
+      </button>
+    </div>
+
+    <p *ngIf="mensajeError" class="text-danger mt-3 fw-bold fs-5">{{ mensajeError }}</p>
+  </section>
+</main>

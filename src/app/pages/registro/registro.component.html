@@ -1,0 +1,52 @@
+<div class="login-container">
+  <h2>Añadir Editor</h2>
+  <form (ngSubmit)="register()">
+    <div class="form-group">
+      <label for="usuario">Usuario</label>
+      <input type="text" id="usuario" [(ngModel)]="usuario" name="usuario" required
+        placeholder="Ingresa tu nombre de usuario">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required
+        placeholder="Ingresa tu contraseña">
+    </div>
+
+    <button type="submit">Añadir</button>
+  </form>
+
+</div>
+
+<div class="usuarios-container" *ngIf="users.length > 0">
+  <h3>Usuarios registrados</h3>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Usuario</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.usuario }}</td>
+        <td>
+          <select [(ngModel)]="user.rol">
+            <option value="ADMIN">ADMIN</option>
+            <option value="EDITOR">EDITOR</option>
+          </select>
+        </td>
+        <td>
+          <div class="d-flex gap-3">
+              <button (click)="updateRole(user)">Guardar</button>
+              <button style="background-color: red;" (click)="deleteUser(user)">Eliminar</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="errorMessage" class="error-message" [ngStyle]="{'white-space': 'pre-line'}">
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>

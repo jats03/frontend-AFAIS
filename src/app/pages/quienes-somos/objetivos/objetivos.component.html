@@ -1,0 +1,47 @@
+<main class="container py-4">
+  <h1 class="text-center fw-bold">OBJETIVOS</h1>
+
+  <div *ngIf="this.objetivos.length == 0" class="py-5">
+    <h2 class="d-flex align-items-center justify-content-center">
+      Nuevos objetivos próximamente...
+    </h2>
+  </div>
+
+  <section class="row justify-content-center">
+    <div class="col-md-8 col-12" *ngFor="let objetivo of objetivos">
+      <div class="d-flex align-items-center border-bottom pb-2 mb-3 mt-5">
+        <div class="icono me-2"></div>
+        <h2 *ngIf="!objetivo.editando" class="mb-0 flex-grow-1">{{ objetivo.titulo }}</h2>
+        <input *ngIf="isLoggedIn && objetivo.editando" [(ngModel)]="objetivo.titulo" class="form-control" />
+        <span *ngIf="isLoggedIn">
+          <i *ngIf="!objetivo.editando" class="fas fa-edit text-warning fs-4 me-2" (click)="editarObjetivo(objetivo)"></i>
+          <i class="fas fa-trash text-danger fs-4" (click)="eliminarObjetivo(objetivo.id)"></i>
+        </span>
+      </div>
+      <div class="border p-2 w-100 d-flex flex-column">
+        <p *ngIf="!objetivo.editando" class="m-0 text-break w-100" style="white-space: pre-wrap">{{ objetivo.descripcion }}</p>
+        <textarea *ngIf="isLoggedIn && objetivo.editando" [(ngModel)]="objetivo.descripcion" class="form-control"></textarea>
+      </div>
+      <button *ngIf="isLoggedIn && objetivo.editando" class="btn btn-success mt-2"
+        (click)="guardarEdicion(objetivo)">Guardar</button>
+    </div>
+  </section>
+
+  <div *ngIf="isLoggedIn" class="card shadow-sm mx-auto mt-4" style="max-width: 28rem;">
+    <div class="card-body">
+      <h2 class="card-title fs-5 fw-semibold">Añadir Nuevo Objetivo</h2>
+      <form (ngSubmit)="agregarObjetivo()" enctype="text/plain" class="d-flex flex-column gap-3">
+        <div>
+          <label for="titulo" class="form-label fw-medium">Título</label>
+          <input type="text" id="titulo" [(ngModel)]="nuevoObjetivo.titulo" name="titulo" required class="form-control" autocomplete="off">
+        </div>
+        <div>
+          <label for="descripcion" class="form-label fw-medium">Descripción</label>
+          <textarea id="descripcion" [(ngModel)]="nuevoObjetivo.descripcion" name="descripcion" required
+            class="form-control" autocomplete="off"></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark w-100">Añadir Objetivo</button>
+      </form>
+    </div>
+  </div>
+</main>

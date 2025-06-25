@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-width: 768px;
+  display: flex;
+  flex-direction: column;
+}
+
+app-root, app-actividades, app-galeria, app-proyectos, app-contacto,
+app-inicio, app-mision-fines, app-objetivos, app-organigrama{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+
+main {
+  padding: 20px 100px 20px 100px;
+  flex-grow: 1;
+    /* Se expande para empujar el footer hacia abajo */
+}
+
+.encabezados {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.inicio {
+  padding: 20px 0px 0px 20px;
+}
+
+.fas.fa-trash {
+  cursor: pointer;
+}
+
+.fas.fa-trash:hover {
+  color: darkred;
+}

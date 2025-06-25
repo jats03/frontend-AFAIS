@@ -1,0 +1,83 @@
+main .proyectos {
+  padding: 0px 60px 0px 60px;
+}
+
+main .proyectos .desc {
+  display: flex;
+}
+
+main .proyectos .desc img {
+  width: 150px;
+  padding-right: 30px;
+}
+
+main .proyectos .desc .info {
+  border: 2px solid black;
+  padding: 0px 10px 0px 10px;
+  width: 100%;
+}
+
+.proyecto-form {
+  width: 100%;
+  max-width: 28rem;
+  margin-left: 2rem;
+  padding: 20px;
+}
+
+.titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.etiqueta {
+  font-weight: 500;
+  color: #000;
+}
+
+.input {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.boton {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #000;
+  color: white;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.icono-eliminar {
+  color: red;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.icono-eliminar:hover {
+  color: darkred;
+}

@@ -1,0 +1,23 @@
+footer {
+  background-color: green;
+  color: #fff;
+  flex-shrink: 1;
+  height: 210px;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+}
+
+footer .rrss a i {
+  transition: transform 0.3s ease;
+}
+
+footer .rrss a i:hover {
+  transform: scale(1.25);
+}
+
+footer .info div {
+  margin-top: 10px;
+}
+
+

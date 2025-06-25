@@ -1,0 +1,7 @@
+{
+  "/AFAIS": {
+    "target": "http://localhost:8080/AFAIS",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

@@ -1,0 +1,73 @@
+<main class="container py-4">
+  <h1 class="text-center fw-bold">GALERÍA</h1>
+
+  <div *ngIf="this.todasImagenes.length == 0" class="py-5">
+    <h2 class="d-flex align-items-center justify-content-center">
+      Nuevas imágenes próximamente...
+    </h2>
+  </div>
+
+  <div *ngIf="todasImagenes.length > 0">
+    <section class="d-flex align-items-center justify-content-center gap-3 mb-5">
+
+        <div *ngIf="todasImagenes.length <= 2" class="d-flex justify-content-center gap-3">
+          <div class="position-relative" *ngFor="let img of todasImagenes" style="width: 256px; height: 350px;">
+            <img class="rounded" [src]="getImage(img.id)" style="width: 256px; height: 100%;">
+            <span *ngIf="isLoggedIn" class="position-absolute top-0 end-0 text-danger fs-4 p-2" (click)="eliminarImagen(img.id)">
+              <i class="fas fa-trash"></i>
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="todasImagenes.length >= 3">
+
+        <div class="d-flex w-100 gap-3" style="transition: transform 0.5s ease-in-out"
+          [style.width.px]="totalSlides * slideWidth" #slidesContainer>
+          <section class="d-flex align-items-center justify-content-center gap-3 mb-5">
+
+            <button class="btn btn-outline-dark fs-3 rounded-circle" (click)="prevSlide()"
+              [ngClass]="{ 'invisible': ocultarPrev }">
+              &#10094;
+            </button>
+
+            <div class="position-relative"
+              style="width: 800px; height: 385px; overflow: hidden; display: flex; align-items: center">
+              <div class="d-flex w-100 gap-3" style="transition: transform 0.5s ease-in-out"
+                [style.width.px]="totalSlides * slideWidth" #slidesContainer>
+                <div class="position-relative" *ngFor="let img of imagenes" style="width: 256px; height: 350px">
+                  <div style="width: 256px; height: 100%">
+                    <img class="rounded" [src]="getImage(img.id)" style="width:256px; height: 100%">
+                    <span *ngIf="isLoggedIn" class="position-absolute top-0 end-0 text-danger fs-4 p-2" (click)="eliminarImagen(img.id)">
+                      <i class="fas fa-trash"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-outline-dark fs-3 rounded-circle" (click)="nextSlide()"
+              [ngClass]="{ 'invisible': ocultarNext }">
+              &#10095;
+            </button>
+
+          </section>
+        </div>
+        </div>
+
+    </section>
+  </div>
+
+  <div *ngIf="isLoggedIn" class="card shadow-sm mx-auto" style="max-width: 28rem;">
+    <div class="card-body">
+      <h2 class="card-title fs-5 fw-semibold">Añadir Nueva Imagen</h2>
+      <form (ngSubmit)="agregarImagen()" enctype="multipart/form-data" class="d-flex flex-column gap-3">
+        <div>
+          <label for="UrlImagen" class="form-label fw-medium">Imagen</label>
+          <input type="file" id="UrlImagen" class="form-control" (change)="onFileSelected($event)" required>
+        </div>
+        <button type="submit" class="btn btn-dark">Añadir Imagen</button>
+      </form>
+    </div>
+  </div>
+
+</main>

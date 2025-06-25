@@ -1,0 +1,47 @@
+<header class="text-white">
+  <section class="container d-flex justify-content-between align-items-center py-3">
+    <section class="logo">
+      <img src="assets/logo.png" routerLink="/inicio"
+        class="img-fluid btn" style="max-width: 300px; height: auto;" />
+    </section>
+    <section class="accesos d-flex gap-3">
+      <div *ngIf="isLoggedIn" class="align-content-center d-flex gap-4">
+        <button *ngIf="isAdmin" routerLink="/registro" class="d-flex align items-center fw-bold">AÑADIR EDITOR</button>
+        <button (click)="this.authService.logout()" class="d-flex align-items-center fw-bold" style="background: rgb(255, 0, 0)">CERRAR SESIÓN</button>
+      </div>
+    </section>
+  </section>
+
+  <nav class="container-fluid pb-3">
+    <ul class="nav nav-pills justify-content-evenly w-100 gap-20">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/inicio" routerLinkActive="activo">INICIO</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          CONÓCENOS
+        </a>
+        <ul class="dropdown-menu border-0" style="background-color: green;">
+          <li><a class="dropdown-item text-white" routerLink="/mision-fines">MISIÓN Y FINES</a></li>
+          <li><a class="dropdown-item text-white" routerLink="/organigrama">ORGANIGRAMA</a></li>
+          <li><a class="dropdown-item text-white" routerLink="/objetivos">OBJETIVOS</a></li>
+          <li><a class="dropdown-item text-white" routerLink="/transparencia">TRANSPARENCIA</a></li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/proyectos" routerLinkActive="activo">PROYECTOS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/actividades" routerLinkActive="activo">ACTIVIDADES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/galeria" routerLinkActive="activo">GALERÍA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/contacto" routerLinkActive="activo">CONTACTO</a>
+      </li>
+    </ul>
+  </nav>
+</header>

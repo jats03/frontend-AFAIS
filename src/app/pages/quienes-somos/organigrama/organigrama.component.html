@@ -1,0 +1,139 @@
+<main>
+  <h1 class="encabezados">ORGANIGRAMA</h1>
+
+  <div class="organigrama">
+    <div class="nivel">
+      <div class="caja1">ASAMBLEA GENERAL</div>
+    </div>
+
+    <div class="lineaV"></div>
+
+    <div class="nivel">
+      <div class="caja1">JUNTA DIRECTIVA</div>
+    </div>
+
+    <div class="lineaV"></div>
+
+    <div class="nivel">
+      <div class="caja1">ÁREAS DE TRABAJO</div>
+    </div>
+
+    <div class="lineaV"></div>
+    <div class="conector">
+      <div class="lineaH"></div>
+      <div class="lineaH"></div>
+      <div class="lineaH"></div>
+      <div class="lineaH"></div>
+    </div>
+
+    <div class="nivel">
+      <div class="caja2">Trabajo Social</div>
+      <div class="caja2">Formación</div>
+      <div class="caja2">Atención Temprana y Logopedia</div>
+      <div class="caja2">Atención y Apoyo a Familias</div>
+      <div class="caja2">Voluntariado</div>
+    </div>
+  </div>
+
+  <h1 class="encabezados pt-5">FUNCIONES POR ÁREAS</h1>
+
+  <div class="container mt-4">
+    <table class="table table-bordered text-center align-middle" style="border: 2px solid #8A9B68;">
+      <thead class="table-success">
+        <tr style="border: 2px solid #8A9B68;">
+          <th style="background-color: #FBC397; border: 2px solid #8A9B68;">Trabajo Social</th>
+          <th style="background-color: #FBC397; border: 2px solid #8A9B68;">Formación</th>
+          <th style="background-color: #FBC397; border: 2px solid #8A9B68;">Atención Temprana y Logopedia</th>
+          <th style="background-color: #FBC397; border: 2px solid #8A9B68;">Atención y Apoyo a Familias</th>
+          <th style="background-color: #FBC397; border: 2px solid #8A9B68;">Voluntariado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border: 2px solid #8A9B68;">
+            • Solicitud, ejecución y justificación de ayudas y subvenciones <br>
+            • Gestión de ayudas institucionales <br>
+            • Servicio de orientación e información a familias (SOI) <br>
+            • Redes sociales y página web <br>
+            • Difusión en sanidad, educación y servicios sociales
+          </td>
+          <td style="border: 2px solid #8A9B68;">
+            • Escuela de familias <br>
+            • Talleres de inteligencia emocional <br>
+            • Talleres de Habilidades Sociales <br>
+            • Formación a voluntarios <br>
+            • Charlas a institutos <br>
+            • Actividades de Ocio y Tiempo libre
+          </td>
+          <td style="border: 2px solid #8A9B68;">
+            • Valoración inicial a niños/as <br>
+            • Sesiones de logopedia <br>
+            • Asesoramiento <br>
+            • Sensibilización y difusión en salud <br>
+            • Gestión de demandas de necesidades educativas y sanitarias <br>
+            • Formación a docentes de alumnado con discapacidad auditiva
+          </td>
+          <td style="border: 2px solid #8A9B68;">
+            • Atención, orientación y Apoyo a familias <br>
+            • Difusión en sanidad, educación y servicios sociales <br>
+            • Acogida a nuevas familias <br>
+            • Orientación y apoyo emocional a familias <br>
+            • Becas NEE <br>
+            • Redes sociales y página web
+          </td>
+          <td style="border: 2px solid #8A9B68;">
+            • Interpretación en LSE. <br>
+            • Apoyo en la formación <br>
+            • Apoyo en actividades de ocio y tiempo libre. <br>
+            • Padres guía: Acogida a nuevas familias.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h1 class="encabezados pt-5">COMPOSICIÓN DE LA JUNTA DIRECTIVA Y EQUIPO TÉCNICO</h1>
+
+  <section class="row justify-content-left">
+    <div class="col-md-8 col-12" *ngFor="let cargo of cargos">
+      <div class="d-flex align-items-center pb-2 mt-3" style="margin-left: 30px;">
+        <div class="icono me-2"></div>
+        <h5 *ngIf="!cargo.editando" class="mb-0 flex-grow-1">{{ cargo.cargo }}</h5>
+        <input *ngIf="isLoggedIn && cargo.editando" [(ngModel)]="cargo.cargo" class="form-control" />
+        <span *ngIf="isLoggedIn">
+          <i *ngIf="!cargo.editando" class="fas fa-edit text-warning fs-4 me-2" (click)="editarCargo(cargo)"></i>
+          <i class="fas fa-trash text-danger fs-4" (click)="eliminarCargo(cargo.id)"></i>
+        </span>
+      </div>
+      <div class="border p-2 w-100 d-flex flex-column" style="margin-left: 38px !important">
+        <p *ngIf="!cargo.editando" class="m-0 text-break w-100" style="white-space: pre-wrap">{{ cargo.nombre }}</p>
+        <textarea *ngIf="isLoggedIn && cargo.editando" [(ngModel)]="cargo.nombre"
+          class="form-control"></textarea>
+      </div>
+      <button *ngIf="isLoggedIn && cargo.editando" class="btn btn-success mt-2"
+        (click)="guardarEdicion(cargo)" style="margin-left: 30px;">Guardar</button>
+    </div>
+  </section>
+
+  <div *ngIf="isLoggedIn" class="card shadow-sm mx-auto mt-4" style="max-width: 28rem;">
+    <div class="card-body">
+      <h2 class="card-title fs-5 fw-semibold">Añadir Nuevo Cargo</h2>
+      <form (ngSubmit)="agregarCargo()" enctype="text/plain" class="d-flex flex-column gap-3">
+        <div>
+          <label for="cargo" class="form-label fw-medium">Cargo</label>
+          <input type="text" id="cargo" [(ngModel)]="nuevoCargo.cargo" name="cargo" required class="form-control"
+            autocomplete="off">
+        </div>
+        <div>
+          <label for="nombre" class="form-label fw-medium">Nombre</label>
+          <textarea id="nombre" [(ngModel)]="nuevoCargo.nombre" name="nombre" required
+            class="form-control" autocomplete="off"></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark w-100">Añadir Cargo</button>
+      </form>
+    </div>
+  </div>
+
+  <!--<p *ngIf="mensajeError" class="text-danger mt-3 fw-bold fs-5">{{ mensajeError }}</p>-->
+</main>
+

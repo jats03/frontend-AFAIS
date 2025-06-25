@@ -1,0 +1,56 @@
+<main class="container py-4">
+  <h1 class="text-center fw-bold">PROYECTOS</h1>
+
+  <div *ngIf="this.proyectos.length == 0" class="py-5">
+    <h2 class="d-flex align-items-center justify-content-center">
+      Nuevos proyectos próximamente...
+    </h2>
+  </div>
+
+  <section class="px-5">
+    <div *ngFor="let proyecto of proyectos" class="mb-4 mt-4">
+      <h2 class="d-flex align-items-center justify-content-between">
+        <span *ngIf="!proyecto.editando">{{ proyecto.titulo }}</span>
+        <input *ngIf="isLoggedIn && proyecto.editando" [(ngModel)]="proyecto.titulo" class="form-control" />
+        <span *ngIf="isLoggedIn">
+        <i *ngIf="!proyecto.editando" class="fas fa-edit text-warning fs-4 me-2" (click)="editarProyecto(proyecto)"></i>
+        <i class="fas fa-trash text-danger fs-4" (click)="eliminarProyecto(proyecto.id)"></i>
+      </span>
+      </h2>
+      <div class="d-flex border p-3 rounded align-items-stretch flex-column flex-md-row">
+        <img [src]="getImage(proyecto.id)" class="me-3 flex-shrink-0"
+          style="width: 200px; height: 200px">
+        <div class="border p-2 w-100 d-flex flex-column">
+          <p *ngIf="!proyecto.editando" class="m-0 text-break w-100" style="white-space: pre-wrap;">{{ proyecto.descripcion }}</p>
+          <textarea *ngIf="isLoggedIn && proyecto.editando" [(ngModel)]="proyecto.descripcion"
+            class="form-control"></textarea>
+        </div>
+      </div>
+      <button *ngIf="isLoggedIn && proyecto.editando" class="btn btn-success mt-2"
+        (click)="guardarEdicion(proyecto)">Guardar</button>
+
+    </div>
+  </section>
+
+  <div *ngIf="isLoggedIn" class="card shadow-sm mx-auto" style="max-width: 28rem;">
+    <div class="card-body">
+      <h2 class="card-title fs-5 fw-semibold">Añadir Nuevo Proyecto</h2>
+      <form (ngSubmit)="agregarProyecto()" enctype="multipart/form-data" class="d-flex flex-column gap-3">
+        <div>
+          <label for="titulo" class="form-label fw-medium">Título</label>
+          <input type="text" id="titulo" [(ngModel)]="nuevoProyecto.titulo" name="titulo" required class="form-control" autocomplete="off">
+        </div>
+        <div>
+          <label for="descripcion" class="form-label fw-medium">Descripción</label>
+          <textarea id="descripcion" [(ngModel)]="nuevoProyecto.descripcion" name="descripcion" required
+            class="form-control" autocomplete="off"></textarea>
+        </div>
+        <div>
+          <label for="UrlImagen" class="form-label fw-medium">Imagen</label>
+          <input type="file" id="UrlImagen" (change)="onFileSelected($event)" required class="form-control">
+        </div>
+        <button type="submit" class="btn btn-dark w-100">Añadir Proyecto</button>
+      </form>
+    </div>
+  </div>
+</main>
