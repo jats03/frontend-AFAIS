@@ -15,7 +15,7 @@ export class AuthService{
 
   checkLoginStatus() {
     console.log("save token: " + this.getToken());
-    this.authState.next(this.hasToken()); // ✅ Verifica si hay sesión activa
+    this.authState.next(this.hasToken());
     if ( localStorage.getItem("token") == this.tokenAdmin ) {
       this.isAdmin.next(true);
     } else {

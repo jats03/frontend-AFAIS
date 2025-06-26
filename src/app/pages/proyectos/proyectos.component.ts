@@ -57,7 +57,6 @@ export class ProyectosComponent implements OnInit {
           this.cargarProyectos(); // Recargar la lista de proyectos
           this.nuevoProyecto = { titulo: '', descripcion: '', UrlImagen: null }; // Limpiar el formulario
           this.selectedFile = null; // Limpiar el archivo seleccionado
-          location.reload();
         },
         (error) => {
           console.error('Error al crear el proyecto', error);
@@ -72,7 +71,6 @@ export class ProyectosComponent implements OnInit {
         () => {
           console.log(`Proyecto con ID ${id} eliminado`);
           this.proyectos = this.proyectos.filter(proyecto => proyecto.id !== id);
-          location.reload();
         },
         (error) => {
           console.error('Error al eliminar el proyecto', error);

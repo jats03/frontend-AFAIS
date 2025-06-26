@@ -48,7 +48,6 @@ export class OrganigramaComponent {
         console.log('Cargo creado exitosamente', response);
         this.cargarCargos();
         this.nuevoCargo = { cargo: '', nombre: ''};
-        location.reload();
       },
       (error) => {
         console.error('Error al crear el cargo', error);
@@ -57,18 +56,15 @@ export class OrganigramaComponent {
   }
 
   eliminarCargo(id: number): void {
-    if (confirm('¿Estás seguro de que quieres eliminar este cargo?')) {
-      this.apiService.eliminarDatos(`organigrama/${id}`).subscribe(
-        () => {
-          console.log(`Cargo eliminado`);
-          this.cargos = this.cargos.filter(cargo => cargo.id !== id);
-          location.reload();
-        },
-        (error) => {
-          console.error('Error al eliminar el cargo', error);
-        }
-      );
-    }
+    this.apiService.eliminarDatos(`organigrama/${id}`).subscribe(
+      () => {
+        console.log(`Cargo eliminado`);
+        this.cargos = this.cargos.filter(cargo => cargo.id !== id);
+      },
+      (error) => {
+        console.error('Error al eliminar el cargo', error);
+      }
+    );
   }
 
   editarCargo(cargo: any): void {

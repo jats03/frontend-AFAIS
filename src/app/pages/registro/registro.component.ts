@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -25,25 +26,28 @@ export class RegistroComponent implements OnInit{
   constructor(private apiService: ApiService, private router: Router) {}
 
   register() {
-    location.reload();
-    const payload = {
-      usuario: this.usuario,
-      password: this.password,
-    };
-
-    this.apiService.post('auth/register', payload).subscribe({
-      next: () => {
-        this.successMessage = 'Usuario registrado correctamente.';
-        this.errorMessage = '';
-        // Redirigir si quieres automáticamente:
-        // this.router.navigate(['/login']);
-      }
-    });
+    if (this.usuario.trim()!='' && this.password.trim()!='') {
+      const payload = {
+        usuario: this.usuario,
+        password: this.password,
+      };
+      this.apiService.post('auth/register', payload).subscribe(
+        (response) => {
+          this.successMessage = 'Usuario registrado correctamente.';
+          this.errorMessage = '';
+          // Redirigir si quieres automáticamente:
+          // this.router.navigate(['/login']);
+        }
+      );
+      this.loadUsers();
+      this.usuario = '';
+      this.password = '';
+    }
   }
 
   loadUsers() {
     this.apiService.getDatos(`usuarios`).subscribe(
-      (users: any[]) => {
+      (users) => {
         this.users = users;
       },
       error => {

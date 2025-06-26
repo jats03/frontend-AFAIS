@@ -47,7 +47,6 @@ export class ObjetivosComponent {
         console.log('Objetivo creado exitosamente', response);
         this.cargarObjetivos();
         this.nuevoObjetivo = { titulo: '', descripcion: ''};
-        location.reload();
       },
       (error) => {
         console.error('Error al crear el objetivo', error);
@@ -56,18 +55,15 @@ export class ObjetivosComponent {
   }
 
   eliminarObjetivo(id: number): void {
-    if (confirm('¿Estás seguro de que quieres eliminar este objetivo?')) {
-      this.apiService.eliminarDatos(`objetivos/${id}`).subscribe(
+    this.apiService.eliminarDatos(`objetivos/${id}`).subscribe(
         () => {
           console.log(`Objetivo eliminado`);
           this.objetivos = this.objetivos.filter(objetivo => objetivo.id !== id);
-          location.reload();
         },
         (error) => {
           console.error('Error al eliminar el objetivo', error);
         }
-      );
-    }
+    );
   }
 
   editarObjetivo(objetivo: any): void {

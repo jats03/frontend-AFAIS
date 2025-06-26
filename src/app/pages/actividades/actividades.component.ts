@@ -60,7 +60,6 @@ export class ActividadesComponent implements OnInit {
           this.cargarActividades(); // Recargar la lista de actividades
           this.nuevaActividad = { titulo: '', descripcion: '', UrlImagen: null }; // Limpiar el formulario
           this.selectedFile = null; // Limpiar el archivo seleccionado
-          location.reload();
         },
         (error) => {
           console.error('Error al crear la actividad', error);
@@ -75,7 +74,6 @@ export class ActividadesComponent implements OnInit {
         () => {
           console.log(`Actividad: {{actividad.titulo}} eliminado`);
           this.actividades = this.actividades.filter(actividad => actividad.id !== id);
-          location.reload();
         },
         (error) => {
           console.error('Error al eliminar la actividad', error);

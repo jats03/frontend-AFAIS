@@ -51,7 +51,7 @@ export class TransparenciaComponent implements OnInit{
 
       this.apiService.subirDocumento(this.archivoSeleccionado).subscribe(
         (response) => {
-          location.reload();
+          this.cargarDocumentos();
         },
         (error) => {
           this.mensaje = "Error al subir el documento.";
@@ -70,7 +70,6 @@ export class TransparenciaComponent implements OnInit{
           () => {
             console.log(`Documento con ID ${id} eliminado`);
             this.documentos = this.documentos.filter(doc => doc.id !== id);
-            location.reload();
           },
           (error) => {
             console.error('Error al eliminar el proyecto', error);

@@ -1,6 +1,6 @@
 <div class="login-container">
   <h2>Añadir Editor</h2>
-  <form (ngSubmit)="register()">
+  <form>
     <div class="form-group">
       <label for="usuario">Usuario</label>
       <input type="text" id="usuario" [(ngModel)]="usuario" name="usuario" required
@@ -13,7 +13,7 @@
         placeholder="Ingresa tu contraseña">
     </div>
 
-    <button type="submit">Añadir</button>
+    <button (click)="register()" type="submit">Añadir</button>
   </form>
 
 </div>
